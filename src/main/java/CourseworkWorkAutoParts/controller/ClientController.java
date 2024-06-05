@@ -24,4 +24,13 @@ public interface ClientController {
 
     @DeleteMapping("/{id}")
     ResponseEntity<Void> deleteClient(@PathVariable Long id);
+
+   @GetMapping("/ClientByCriteria")
+    ResponseEntity<List<Client>> getClientByCriteria() {
+    List<Client> client = clientService.getClientByCriteria (1, 3);
+    client.addAll(ClientInRange);
+    return ResponseEntity.ok(client);
+}
+
+    
 }
